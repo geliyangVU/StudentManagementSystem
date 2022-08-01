@@ -1,38 +1,27 @@
 package com.example.springmysqljpashiroproject.service;
 
 import com.example.springmysqljpashiroproject.dao.StudentDao;
+import com.example.springmysqljpashiroproject.exceptions.StudentEmptyNameException;
 import com.example.springmysqljpashiroproject.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.UUID;
 
 
 @Service
 public class StudentService {
-
     private StudentDao studentDao;
 
+
     @Autowired
-    public StudentService(StudentDao studentDao){
-        this.studentDao=studentDao;
+    public StudentService(StudentDao studentDao) {
+        this.studentDao = studentDao;
     }
 
-    public List<Student> getAllStudents(){
-        return studentDao.selectAllStudents();
+    public Student addStudent(Student student){
+        if(student.getName().isEmpty()){
+            throw new StudentEmptyNameException("Student name cannnot be empty");
+        }
+        return studentDao.save(student);
     }
-
-    public int addStudent(Student student){
-        return studentDao.insertStudent(student);
-    }
-
-    public int updateStudent(Student student){
-        return studentDao.updateStudent(student);
-    }
-
-    public int deleteStudent(UUID id){
-        return studentDao.deleteStudentById(id);
-    }
-
 }
