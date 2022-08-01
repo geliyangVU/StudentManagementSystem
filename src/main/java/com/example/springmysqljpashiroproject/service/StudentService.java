@@ -7,6 +7,7 @@ import com.example.springmysqljpashiroproject.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
@@ -31,6 +32,11 @@ public class StudentService {
             throw new StudentNotExistException("Cannot find student id, Student does not exist!");
         }
         return studentDao.save(student);
+    }
+
+
+    public List<Student> getAllStudents(){
+        return (List<Student>) studentDao.findAll();
     }
 
 
