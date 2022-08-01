@@ -4,9 +4,7 @@ package com.example.springmysqljpashiroproject.controller;
 import com.example.springmysqljpashiroproject.model.Student;
 import com.example.springmysqljpashiroproject.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,5 +27,17 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
+
+    @PostMapping
+    public int addStudent(@RequestBody Student student){
+        return studentService.addStudent(student);
+    }
+
+
+    @PutMapping
+    public String updateStudent(@RequestBody Student student){
+        studentService.updateStudent(student);
+        return "Updated student";
+    }
 
 }
