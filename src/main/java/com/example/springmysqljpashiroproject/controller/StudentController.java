@@ -40,4 +40,12 @@ public class StudentController {
         return "Updated student";
     }
 
+
+    @DeleteMapping(path = "{id}")
+
+    //localhost:8080/api/student/12345
+    public String deleteStudent(@PathVariable("id") UUID id){
+        studentService.deleteStudent(id);
+        return "Deleted student";
+    }
 }
