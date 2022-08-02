@@ -40,7 +40,7 @@ public class StudentService {
         return (List<Student>) studentDao.findAll();
     }
 
-    
+
 
     public Optional<Student> getStudentById(Long id){
         return studentDao.findById(id);
