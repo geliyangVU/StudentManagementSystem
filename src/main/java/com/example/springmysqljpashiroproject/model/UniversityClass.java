@@ -3,6 +3,7 @@ package com.example.springmysqljpashiroproject.model;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
 
 @Entity
 @Table(name="university_class")
@@ -18,6 +19,9 @@ public class UniversityClass {
     @Column(nullable = false)
     private Integer number;
 
+    @OneToMany(mappedBy = "universityClass")
+    List<Student> students;
+
     public UniversityClass(Long id, Integer year, Integer number) {
         this.id = id;
         this.year = year;
@@ -25,7 +29,7 @@ public class UniversityClass {
     }
 
     public UniversityClass() {
-        
+
     }
 
     public Long getId() {
