@@ -16,4 +16,11 @@ public interface StudentMapper {
     @Select("SELECT * FROM student WHERE name LIKE #{name}")
     List<Student> getStudentsContainStringInName(@Param("name") String name);
 
+    //SELECT * FROM student WHERE university_class_id(fk) IN
+    //(SELECT id FROM university_class where year=2021 and number = 1);
+    @Select("SELECT * FROM student WHERE university_class_id IN"+
+            "(SELECT id FROM university_class WHERE year=#{year} AND number = #{number})")
+    List<Student> getStudentsInClass(@Param("year") int year, @Param("number") int number);
+
+
 }
