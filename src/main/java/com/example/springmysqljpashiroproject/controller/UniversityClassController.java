@@ -1,12 +1,13 @@
 package com.example.springmysqljpashiroproject.controller;
 
 
+import com.example.springmysqljpashiroproject.exceptions.InvalidUniversityClassException;
 import com.example.springmysqljpashiroproject.model.UniversityClass;
 import com.example.springmysqljpashiroproject.service.UniversityClassService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,7 +26,18 @@ public class UniversityClassController {
     List<UniversityClass> getAllClasses(){
         return universityClassService.getAllClasses();
     }
-    
+
+    @PostMapping("/add")
+    public ResponseEntity<String> addClass(@RequestBody UniversityClass universityClass){
+        try{
+            UniversityClass savedClass= universityClassService.addClass(universityClass);
+            return ResponseEntity.ok("Added class."+savedClass.toString());
+        }catch (InvalidUniversityClassException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+
+        }
+    }
+
 
 
 }
