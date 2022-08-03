@@ -21,6 +21,13 @@ public class Student {
     private UniversityClass universityClass;
 
 
+    public UniversityClass getUniversityClass() {
+        return universityClass;
+    }
+
+    public void setUniversityClass(UniversityClass universityClass) {
+        this.universityClass = universityClass;
+    }
 
     public Student(Long id, String name) {
         this.id = id;
