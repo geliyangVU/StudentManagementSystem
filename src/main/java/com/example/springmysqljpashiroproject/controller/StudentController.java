@@ -54,5 +54,11 @@ public class StudentController {
         }
     }
 
+    @GetMapping("/name")
+    //exp: /api/student/name?name=xxx
+    public List<Student> getStudentsByName(@RequestParam String name){
+        return studentService.getStudentsByName(name);
+
+    }
 
 }

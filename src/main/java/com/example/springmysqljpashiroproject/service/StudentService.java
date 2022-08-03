@@ -68,4 +68,10 @@ public class StudentService {
         return studentDao.findById(id);
     }
 
+
+
+    public List<Student> getStudentsByName(String name){
+        return studentDao.findByName(name);
+    }
+
 }

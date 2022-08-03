@@ -11,4 +11,6 @@ import java.util.UUID;
 @Repository
 public interface StudentDao extends CrudRepository<Student, Long> {
 
+    List<Student> findByName(String name);
+
 }
