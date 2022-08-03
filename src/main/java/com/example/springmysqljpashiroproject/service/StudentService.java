@@ -84,4 +84,10 @@ public class StudentService {
 
     }
 
+
+    public List<Student> getStudentsInClass(int year, int number){
+        return studentMapper.getStudentsInClass(year,number);
+    }
+
+
 }

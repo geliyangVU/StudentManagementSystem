@@ -61,13 +61,17 @@ public class StudentController {
     }
 
     @GetMapping("/nameContains")
+    //exp: /api/student/nameContains?name=xxx
     public List<Student> getStudentsContainsName(@RequestParam String name){
         return studentService.getStudentsContainName(name);
     }
 
 
-
-
+    //example: /api/student/inClass?year=2021&number=1
+    @GetMapping("/inClass")
+    public List<Student> getStudentsInClass(@RequestParam int year, @RequestParam int name){
+        return studentService.getStudentsInClass(year,name);
+    }
 
 
 
