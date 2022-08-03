@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("api/student")
@@ -60,5 +59,16 @@ public class StudentController {
         return studentService.getStudentsByName(name);
 
     }
+
+    @GetMapping("/nameContains")
+    public List<Student> getStudentsContainsName(@RequestParam String name){
+        return studentService.getStudentsContainName(name);
+    }
+
+
+
+
+
+
 
 }
