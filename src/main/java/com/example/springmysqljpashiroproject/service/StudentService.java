@@ -5,6 +5,7 @@ import com.example.springmysqljpashiroproject.dao.UniversityClassDao;
 import com.example.springmysqljpashiroproject.exceptions.InvalidUniversityClassException;
 import com.example.springmysqljpashiroproject.exceptions.StudentEmptyNameException;
 import com.example.springmysqljpashiroproject.exceptions.StudentNotExistException;
+import com.example.springmysqljpashiroproject.mapper.StudentMapper;
 import com.example.springmysqljpashiroproject.model.Student;
 import com.example.springmysqljpashiroproject.model.UniversityClass;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,14 @@ public class StudentService {
     private StudentDao studentDao;
     private UniversityClassDao universityClassDao;
 
+    private StudentMapper studentMapper;
+
 
     @Autowired
-    public StudentService(StudentDao studentDao,UniversityClassDao universityClassDao) {
+    public StudentService(StudentDao studentDao,UniversityClassDao universityClassDao, StudentMapper studentMapper) {
         this.studentDao = studentDao;
         this.universityClassDao=universityClassDao;
+        this.studentMapper=studentMapper;
     }
 
     public Student addStudent(Student student){
@@ -72,6 +76,12 @@ public class StudentService {
 
     public List<Student> getStudentsByName(String name){
         return studentDao.findByName(name);
+    }
+
+
+    public List<Student> getStudentsContainName(String name){
+        return studentMapper.getStudentsContainStringInName("%"+name+"%");
+
     }
 
 }
