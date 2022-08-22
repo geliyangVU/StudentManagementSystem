@@ -6,7 +6,6 @@ import com.example.springmysqljpashiroproject.exceptions.StudentEmptyNameExcepti
 import com.example.springmysqljpashiroproject.exceptions.StudentNotExistException;
 import com.example.springmysqljpashiroproject.model.Student;
 import com.example.springmysqljpashiroproject.service.StudentService;
-//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("api/student")
 public class StudentController {
