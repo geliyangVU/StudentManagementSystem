@@ -12,8 +12,23 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false, name="name")
-    private String name;
+    @Column(nullable = false, name="firstName")
+    private String firstName;
+
+
+    @Column(nullable = false, name="lastName")
+    private String lastName;
+
+
+    @Column(nullable = false, name="nickname")
+    private String nickname;
+
+    @Column(nullable = false, name="email")
+    private String email;
+
+
+    @Column(nullable = false, name="phoneNumber")
+    private String phoneNumber;
 
 
     @ManyToOne
@@ -29,10 +44,7 @@ public class Student {
         this.universityClass = universityClass;
     }
 
-    public Student(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+
 
     public Student() {
 
@@ -46,19 +58,64 @@ public class Student {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Student(String firstName, String lastName, String nickname, String email, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nickname = nickname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", universityClass=" + universityClass +
                 '}';
     }
 }

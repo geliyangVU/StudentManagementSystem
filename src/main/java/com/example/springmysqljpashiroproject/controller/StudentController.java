@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -53,6 +54,14 @@ public class StudentController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 
         }
+    }
+
+
+    @GetMapping("/id")
+    //exp: /api/student/?id=xxx
+    public Optional<Student> getStudentsById(@RequestParam Long id){
+        return studentService.getStudentById(id);
+
     }
 
     @GetMapping("/name")
